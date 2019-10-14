@@ -51,7 +51,7 @@ Regarding the prototype of the handler, we're not sure about the returning value
 
 We can't wait to see this feature in a stable version of Windows, we strongly believe AV products and researchers will be able to benefit a lot from this, (Going back to hooking syscalls! We don't know if this is good or bad thou) also we want to see how Microsoft will expose the API to use this feature.
 
-![POC](https://cdn1.imggmi.com/uploads/2019/10/14/d10f3cbc28415ab6e67904c1f2da2f42-full.png)
+![POC](poc.png)
 
 - [@n4r1B](https://twitter.com/n4r1B)
 - [@0xcpu](https://twitter.com/0xcpu)
