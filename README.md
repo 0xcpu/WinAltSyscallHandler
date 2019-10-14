@@ -1,5 +1,5 @@
 # WinAltSyscallHandler
-Some research on AltSystemCallHandlers functionality in Windows 10 20H118999
+Some research on AltSystemCallHandlers functionality in Windows 10 20H1 18999
 
 ----------------------------------------------------------------------------
 
@@ -41,7 +41,7 @@ The tool is only for research purpose, this means it is not very well tested and
 - `NtSetInformationProcess` sometimes returns `ERROR_INVALID_PARAMETER` when trying to enable monitoring. It's not clear to us why it was failing.
 
 - It looks like this feature is not "finished?"/functional because `PatchGuard` doesn't like if you modify `PsAltSystemCallHandlers` array.
-![PatchGuard GSoD](https://cdn1.imggmi.com/uploads/2019/10/14/258e4026c2773d05a0fc8ffdeff84e3e-full.png)
+![PatchGuard GSoD](https://cdn1.imggmi.com/uploads/2019/10/14/1384008ddbd806bb1a06de5b2b3b5cfe-full.png)
 
 - There's no simple way(one function) to unregister the syscall handler. That's going back to the observation that it's probably an unfinished feature.
 
