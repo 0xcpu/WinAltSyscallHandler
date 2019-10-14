@@ -51,7 +51,7 @@ Regarding the prototype of the handler, we're not sure about the returning value
 
 We can't wait to see this feature in a stable version of Windows, we strongly believe AV products and researchers will be able to benefit a lot from this, (Going back to hooking syscalls! We don't know if this is good or bad thou) also we want to see how Microsoft will expose the API to use this feature.
 
-![POC](poc.png)
+![POC](poc.jpg)
 
 - [@n4r1B](https://twitter.com/n4r1B)
 - [@0xcpu](https://twitter.com/0xcpu)
