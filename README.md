@@ -40,10 +40,18 @@ The tool is only for research purpose, this means it is not very well tested and
 
 - `NtSetInformationProcess` sometimes returns `ERROR_INVALID_PARAMETER` when trying to enable monitoring. It's not clear to us why it was failing.
 
-- It looks like this feature is not "finished?"/functional because `PatchGuard` doesn't like if you modify `PsAltSystemCallHandlers` array.
+- ~~It looks like this feature is not "finished?"/functional because `PatchGuard` doesn't like if you modify `PsAltSystemCallHandlers` array.~~
 ![PatchGuard GSoD](https://cdn1.imggmi.com/uploads/2019/10/14/1384008ddbd806bb1a06de5b2b3b5cfe-full.png)
 
-- There's no simple way(one function) to unregister the syscall handler. That's going back to the observation that it's probably an unfinished feature.
+- ~~There's no simple way(one function) to unregister the syscall handler. That's going back to the observation that it's probably an unfinished feature.~~
+
+## UPDATE
+
+Thanks to [Yarden Shafir](https://twitter.com/yarden_shafir) for the info regarding the last two issues. Basically the problem is not that the feature is "incomplete" is rather a design issue. For now, this feature is only intended to be used by Windows Defender. So the Windows Defender driver runs as a core driver, which means that is loaded before PG is activated, so it can register a handler safely, and for this same reason there is no way to unregister the function, because only Windows Defender can register a handler there, so it doesn't need to unregister it.
+
+Having this in mind, until Microsoft decide to "open" this feature **the only way to use the tool would be starting the machine under a debugger (WinDbg) or using a tool like [EfiGuard](https://github.com/Mattiwatti/EfiGuard) to disable PatchGuard**
+
+Again big thanks to [Yarden Shafir](https://twitter.com/yarden_shafir) for sharing this info :)
 
 ## CONCLUSION
 
