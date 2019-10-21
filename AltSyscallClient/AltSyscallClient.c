@@ -226,8 +226,6 @@ ManageDriver(
 
 int __cdecl main(int argc, char *argv[])
 {
-    UNREFERENCED_PARAMETER(argv);
-
     DWORD       retCode = EXIT_SUCCESS;
     DWORD       dwBufferLength = 0;
     DWORD       dwPid = 0;
@@ -298,8 +296,8 @@ int __cdecl main(int argc, char *argv[])
             } else {
                 fwprintf(stdout, L"Monitor PID: %lu\n", dwPid);
                 
-               hDevice = CreateFile(ALTSYSCALL_DEVICE_NAMEW,
-								     GENERIC_READ | GENERIC_WRITE,
+                hDevice = CreateFile(ALTSYSCALL_DEVICE_NAMEW,
+                                     GENERIC_READ | GENERIC_WRITE,
                                      0,
                                      NULL,
                                      CREATE_ALWAYS,

@@ -4,7 +4,6 @@
 #include "AltSyscall.h"
 
 
-// Further investigation showed that the Syscall Handler will receive a pointer to a KTRAP_FRAME as only argument
 typedef
 BOOLEAN
 ALT_SYSCALL_HANDLER(
@@ -53,7 +52,7 @@ NTSTATUS
 DriverEntry(
     _In_ PDRIVER_OBJECT   DriverObject,
     _In_ PUNICODE_STRING  RegistryPath
-    )
+)
 {
     UNREFERENCED_PARAMETER(RegistryPath);
 
@@ -120,8 +119,6 @@ DriverUnload(
 
     PDEVICE_OBJECT deviceObject = DriverObject->DeviceObject;
     UNICODE_STRING uniWin32NameString;
-
-    // Investigate why is failing when trying to unload
 
     DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "[AltSyscall] Driver unloading started\n");
 
@@ -245,9 +242,9 @@ RegisterSyscallHandler(
 {
         PAGED_CODE();
 
-        NTSTATUS						status;
-        UNICODE_STRING					funcName;
-        PsRegisterAltSystemCallHandler	pPsRegisterAltSystemCallHandler;
+        NTSTATUS                        status;
+        UNICODE_STRING                  funcName;
+        PsRegisterAltSystemCallHandler  pPsRegisterAltSystemCallHandler;
 
         DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_INFO_LEVEL, "[AltSyscall] Registering Syscall handler\n");
 
