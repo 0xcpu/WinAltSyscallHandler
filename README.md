@@ -19,7 +19,7 @@ Otherwise if the the 6th bit (`DebugActive.AltSyscall`) is set to 1, then the se
 
 `PspEnableAltSystemCallHandling` is called from `NtSetInformationProcess`. As can be seen on the following image:
 
-![Decompiled NtSetInformationProcess calling PspEnableAltSystemCallHandling](https://cdn1.imggmi.com/uploads/2019/10/12/df25e0bb65673e1f925fc3c12af6662a-full.png)
+![PspEnableAltSystemCallHandling](images/PspEnableAltSystemCallHandling.png)
 
 `NtSetInformationProcess` must be called with `PreviousMode == KernelMode` if this is not the case it will return `STATUS_ACCESS_DENIED`, to achieve this we will use the call to `ZwSetInformationProcess` (More about [PreviousMode](https://docs.microsoft.com/en-us/windows-hardware/drivers/kernel/previousmode)). The arguments `NtSetInformationProcess` have to be:
 ```
@@ -41,7 +41,7 @@ The tool is only for research purpose, this means it is not very well tested and
 - `NtSetInformationProcess` sometimes returns `ERROR_INVALID_PARAMETER` when trying to enable monitoring. It's not clear to us why it was failing.
 
 - ~~It looks like this feature is not "finished?"/functional because `PatchGuard` doesn't like if you modify `PsAltSystemCallHandlers` array.~~
-![PatchGuard GSoD](https://cdn1.imggmi.com/uploads/2019/10/14/1384008ddbd806bb1a06de5b2b3b5cfe-full.png)
+![PatchGuard GSoD](images/gsod.png)
 
 - ~~There's no simple way(one function) to unregister the syscall handler. That's going back to the observation that it's probably an unfinished feature.~~
 
@@ -62,7 +62,7 @@ Regarding the prototype of the handler, we're not sure about the returning value
 
 We can't wait to see this feature in a stable version of Windows, we strongly believe AV products and researchers will be able to benefit a lot from this, (Going back to hooking syscalls! We don't know if this is good or bad thou) also we want to see how Microsoft will expose the API to use this feature.
 
-![POC](poc.jpg)
+![POC](images/poc.jpg)
 
 - [@n4r1B](https://twitter.com/n4r1B)
 - [@0xcpu](https://twitter.com/0xcpu)
